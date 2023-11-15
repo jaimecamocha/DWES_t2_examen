@@ -1,9 +1,8 @@
 <?php
-//JAIME FERNÁNDEZ CALVO
-// https://github.com/jaimecamocha/DWES_t2_examen.git
+//JAIME FERNÁNDEZ CALVO https://github.com/jaimecamocha/DWES_t2_examen.git
 
  
-//llamamos a cada una de las clases php
+//llamadas a cada una de las clases php para cada artículo
  include_once 'articulo.php';
  include_once 'pizza.php';
  include_once 'bebida.php';
@@ -22,7 +21,7 @@ $articulos = [
 ];
  
 
-//función mostrar el menu
+//Función para mostrar el menú
 function mostrarMenu($articulos) {
     echo "<h1>NUESTRO MENÚ</h1>";
  
@@ -48,26 +47,26 @@ function mostrarMenu($articulos) {
     }
 }
  
-//función mostrar los articulos más vendidos (ordenados de mayor a menor)
+//Función para mostrar los articulos más vendidos (ordenados de mayor a menor número de ventas)
 function mostrarMasVendidos($articulos) {
     echo "<h1>Los más vendidos</h1>";
  
-    //ordenacion
+    //Ordenacion
     usort($articulos, function ($a, $b) {
         return $b->contador - $a->contador;
     });
     
-    //recorrer y mostrar por pantalla
+    //Recorrer y mostrar por pantalla
     for ($i = 0; $i < 3; $i++) {
         echo "{$articulos[$i]->nombre} → {$articulos[$i]->contador} unidades<br>";
     }
 }
  
-//función mostrar los articulos más lucrativos (ordenados de mayor a menor)
+//Función para mostrar los articulos más lucrativos (ordenados de mayor a menor cantidad de ganancia)
 function mostrarMasLucrativos($articulos) {
     echo "<h1>¡Los más lucrativos!</h1>";
  
-    //ordenación
+    //Ordenación
     usort($articulos, function ($a, $b) {
         $beneficioA = ($a->precio - $a->coste) * $a->contador;
         $beneficioB = ($b->precio - $b->coste) * $b->contador;
@@ -75,14 +74,14 @@ function mostrarMasLucrativos($articulos) {
         return $beneficioB - $beneficioA;
     });
  
-    //recorrer y mostrar por pantalla
+    //Recorrer y mostrar por pantalla
     foreach ($articulos as $articulo) {
         $beneficio = ($articulo->precio - $articulo->coste) * $articulo->contador;
         echo "{$articulo->nombre} → Beneficio: {$beneficio} €<br>";
     }
 }
 
-// llamadas a las funciones
+//Llamadas a las diferentes funciones
 mostrarMenu($articulos);
 mostrarMasVendidos($articulos);
 mostrarMasLucrativos($articulos);
