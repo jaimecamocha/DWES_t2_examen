@@ -1,4 +1,5 @@
 <?php 
+
 //Clase bebida
 class Bebida extends Articulo {
     public $alcoholica;

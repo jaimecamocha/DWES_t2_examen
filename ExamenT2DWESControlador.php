@@ -1,4 +1,7 @@
 <?php
+//JAIME FERNÁNDEZ CALVO
+// https://github.com/jaimecamocha/DWES_t2_examen.git
+
  
 //llamamos a cada una de las clases php
  include_once 'articulo.php';
@@ -18,38 +21,34 @@ $articulos = [
     new Bebida("Cerveza", 1.50, 3.00, 40, true)
 ];
  
-// Ejemplo de uso
-mostrarMenu($articulos);
-mostrarMasVendidos($articulos);
-mostrarMasLucrativos($articulos);
- 
-//mostrar el menu
+
+//función mostrar el menu
 function mostrarMenu($articulos) {
     echo "<h1>NUESTRO MENÚ</h1>";
  
     echo "<h2>Pizzas:</h2>";
     foreach ($articulos as $articulo) {
         if ($articulo instanceof Pizza) {
-            echo "{$articulo->nombre} - Precio: {$articulo->precio}€<br>";
+            echo "{$articulo->nombre} → Precio: {$articulo->precio} €<br>";
         }
     }
  
     echo "<h2>Bebidas:</h2>";
     foreach ($articulos as $articulo) {
         if ($articulo instanceof Bebida) {
-            echo "{$articulo->nombre} - Precio: {$articulo->precio}€<br>";
+            echo "{$articulo->nombre} → Precio: {$articulo->precio} €<br>";
         }
     }
  
     echo "<h2>Otros:</h2>";
     foreach ($articulos as $articulo) {
         if (!($articulo instanceof Pizza) && !($articulo instanceof Bebida)) {
-            echo "{$articulo->nombre} - Precio: {$articulo->precio}€<br>";
+            echo "{$articulo->nombre} → Precio: {$articulo->precio} €<br>";
         }
     }
 }
  
-//mostrar los articulos más vendidos (ordenados de mayor a menor)
+//función mostrar los articulos más vendidos (ordenados de mayor a menor)
 function mostrarMasVendidos($articulos) {
     echo "<h1>Los más vendidos</h1>";
  
@@ -57,13 +56,14 @@ function mostrarMasVendidos($articulos) {
     usort($articulos, function ($a, $b) {
         return $b->contador - $a->contador;
     });
- 
+    
+    //recorrer y mostrar por pantalla
     for ($i = 0; $i < 3; $i++) {
-        echo "{$articulos[$i]->nombre} - {$articulos[$i]->contador} unidades<br>";
+        echo "{$articulos[$i]->nombre} → {$articulos[$i]->contador} unidades<br>";
     }
 }
  
-//mostrar los articulos más lucrativos (ordenados de mayor a menor)
+//función mostrar los articulos más lucrativos (ordenados de mayor a menor)
 function mostrarMasLucrativos($articulos) {
     echo "<h1>¡Los más lucrativos!</h1>";
  
@@ -75,12 +75,17 @@ function mostrarMasLucrativos($articulos) {
         return $beneficioB - $beneficioA;
     });
  
+    //recorrer y mostrar por pantalla
     foreach ($articulos as $articulo) {
         $beneficio = ($articulo->precio - $articulo->coste) * $articulo->contador;
-        echo "{$articulo->nombre} - Beneficio: {$beneficio}€<br>";
+        echo "{$articulo->nombre} → Beneficio: {$beneficio} €<br>";
     }
 }
 
+// llamadas a las funciones
+mostrarMenu($articulos);
+mostrarMasVendidos($articulos);
+mostrarMasLucrativos($articulos);
 
 include_once 'ExamenT2DWESVista.php';
 ?>

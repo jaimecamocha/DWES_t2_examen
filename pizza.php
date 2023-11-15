@@ -17,5 +17,4 @@ class Pizza extends Articulo {
         $this->ingredientes = $ingredientes;
     }
 }
-
 ?>

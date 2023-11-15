@@ -1,6 +1,6 @@
 <?php
 
-//Clase articulos
+//Clase artÍculos
 class Articulo {
     public $nombre;
     public $coste;
@@ -13,7 +13,7 @@ class Articulo {
         $this->precio = $precio;
         $this->contador = $contador;
     }
- 
+    
     public function getNombre() {
         return $this->nombre;
     }
@@ -46,5 +46,4 @@ class Articulo {
         $this->contador = $contador;
     }
 }
-
 ?>
